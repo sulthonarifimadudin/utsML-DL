@@ -1,89 +1,111 @@
 # utsML-DL
 
-Hands-On End-to-End Models (Classification, Regression & Clustering)
+**Hands-On End-to-End Models (Classification, Regression & Clustering)**
 
-1. Repository Purpose
-This repository contains my individual submission for the Machine Learning Midterm (UTS) with the theme:
+## 1. Tujuan Repository
 
-“Hands-On End-to-End Models Machine Learning and Deep Learning”
+Repository ini berisi pengumpulan individu saya untuk **Machine Learning Midterm (UTS)** dengan tema:
 
-The focus in this repository is on traditional / classical machine learning for:
+> “Hands-On End-to-End Models Machine Learning and Deep Learning”
 
-Fraud detection (binary classification)
-Song year prediction (regression)
-Customer segmentation (clustering)
-Each task is implemented as a complete end-to-end ML pipeline: from data loading, preprocessing, modeling, evaluation, up to interpretation.
+Fokus dalam repository ini adalah pada **machine learning tradisional / klasik** untuk:
+- Fraud detection (binary classification)
+- Song year prediction (regression)
+- Customer segmentation (clustering)
 
-2. Project Overview
-2.1 Objectives
-Build end-to-end machine learning pipelines for:
-Fraud detection on online transactions
-Regression to predict the release year of songs
-Customer clustering based on credit card behavior
-Practice:
-Data cleaning & preprocessing
-Handling missing values and outliers
-Handling class imbalance (for fraud detection)
-Feature engineering / feature selection
-Training and evaluating several ML models
-Doing basic hyperparameter tuning
-Comparing model performance and interpreting the results
-2.2 Implemented Tasks
-Fraud Detection – Binary Classification
+Setiap task diimplementasikan sebagai **pipeline ML end-to-end**: mulai dari data loading, preprocessing, modeling, evaluation, hingga interpretasi.
 
-Predict probability that a transaction is fraudulent (isFraud = 1).
-Work with transaction-level features such as amount, time, product code, card & address information, etc.
-Output can be:
-Model performance on validation data
-Fraud probability predictions for test_transaction.csv (for potential submission file: TransactionID, isFraud).
-Song Year Prediction – Regression
+---
 
-Predict the release year of a song from numeric audio features.
-First column in the dataset is the target (year), and the rest are anonymous numeric features (feature_1, feature_2, ...).
-Customer Clustering – Unsupervised Learning
+## 2. Gambaran Proyek
 
-Group customers based on spending & payment behavior.
-Use features such as balance, purchases, cash advance, frequency of transactions, credit limit, payments, minimum payments, tenure, etc.
-Interpret what each cluster represents (e.g., high spenders, revolvers, transactors, risky customers, etc.).
-3. Datasets
-All datasets are provided by the lecturer as part of the midterm.
+### 2.1 Tujuan
 
-3.1 Fraud Detection – Transaction Data
-train_transaction.csv
+- Membangun **pipeline machine learning end-to-end** untuk:
+  1. **Fraud detection** pada transaksi online  
+  2. **Regresi** untuk memprediksi tahun rilis lagu  
+  3. **Customer clustering** berdasarkan perilaku kartu kredit
+- Praktik yang dilakukan:
+  - Data cleaning & preprocessing  
+  - Menangani missing values dan outliers  
+  - Menangani **class imbalance** (khususnya untuk fraud detection)  
+  - Feature engineering / feature selection  
+  - Training dan evaluasi beberapa model ML  
+  - Melakukan **hyperparameter tuning dasar**  
+  - Membandingkan performa model dan menginterpretasikan hasil
 
-Labeled transactions for training & evaluation.
-Each row = one online transaction with many features.
-Target column: isFraud
-1 → fraudulent transaction
-0 → non-fraudulent transaction
-test_transaction.csv
+### 2.2 Task yang Diimplementasikan
 
-Same feature columns as train_transaction.csv, but without isFraud.
-Used as input to trained model to generate fraud probability predictions.
-Typical output format:
-TransactionID, isFraud
-3.2 Regression – Song Year Prediction
-midterm-regresi-dataset.csv
-First value in each row = target label (e.g., 2001) → release year of the song.
-Remaining values = numeric audio features (feature_1, feature_2, ...).
-Features are derived from the audio signal (e.g., timbre, spectral characteristics), without human-friendly names.
-3.3 Customer Clustering – Credit Card Dataset
-clusteringmidterm.csv
-Each row = one credit card customer.
-Important columns (not exhaustive):
-CUST_ID: unique customer ID
-BALANCE, BALANCE_FREQUENCY
-PURCHASES, ONEOFF_PURCHASES, INSTALLMENTS_PURCHASES
-PURCHASES_FREQUENCY, ONEOFF_PURCHASES_FREQUENCY, PURCHASES_INSTALLMENTS_FREQUENCY
-CASH_ADVANCE, CASH_ADVANCE_FREQUENCY, CASH_ADVANCE_TRX
-PURCHASES_TRX
-CREDIT_LIMIT
-PAYMENTS, MINIMUM_PAYMENTS
-PRC_FULL_PAYMENT
-TENURE (months using the card)
-4. Project Structure
-Note: adjust filenames if your actual notebooks / folders use different names.
+1. **Fraud Detection – Binary Classification**  
+   - Memprediksi probabilitas bahwa sebuah transaksi merupakan fraud (`isFraud = 1`).  
+   - Menggunakan fitur transaksi seperti amount, waktu, product code, informasi kartu, alamat, dll.  
+   - Output dapat berupa:
+     - Performa model pada validation set  
+     - Prediksi probabilitas fraud pada `test_transaction.csv` (format: `TransactionID, isFraud`)  
 
+2. **Song Year Prediction – Regression**  
+   - Memprediksi **tahun rilis lagu** berdasarkan fitur numerik audio.  
+   - Kolom pertama = target (tahun rilis), sisanya = fitur numerik anonim (`feature_1`, `feature_2`, dst.).  
+
+3. **Customer Clustering – Unsupervised Learning**  
+   - Mengelompokkan pelanggan berdasarkan pola penggunaan kartu kredit.  
+   - Menggunakan fitur seperti balance, purchases, cash advance, frekuensi transaksi, credit limit, payments, minimum payments, tenure, dll.  
+   - Hasil cluster dapat diinterpretasikan sebagai: high spender, low spender, installment user, risky customer, dan lain-lain.  
+
+---
+
+## 3. Dataset
+
+Semua dataset disediakan oleh dosen sebagai bagian dari UTS.
+
+### 3.1 Fraud Detection – Transaction Data
+
+- **`train_transaction.csv`**  
+  - Berisi transaksi berlabel untuk training dan evaluasi.  
+  - Setiap baris = satu transaksi online dengan banyak fitur.  
+  - Kolom target: **`isFraud`**
+    - `1` → transaksi fraud  
+    - `0` → bukan fraud  
+
+- **`test_transaction.csv`**  
+  - Memiliki fitur yang sama seperti train namun tanpa `isFraud`.  
+  - Digunakan untuk menghasilkan prediksi probabilitas fraud.  
+  - Format output umum:
+    - `TransactionID, isFraud`
+
+---
+
+### 3.2 Regression – Song Year Prediction
+
+- **`midterm-regresi-dataset.csv`**  
+  - Nilai pertama = target (tahun rilis).  
+  - Nilai berikutnya = fitur numerik anonim hasil ekstraksi sinyal audio (seperti spektral, timbre, dll.)
+
+---
+
+### 3.3 Customer Clustering – Credit Card Dataset
+
+- **`clusteringmidterm.csv`**  
+  - Setiap baris = satu pelanggan kartu kredit.  
+  - Kolom penting termasuk:
+    - `CUST_ID`  
+    - `BALANCE`, `BALANCE_FREQUENCY`  
+    - `PURCHASES`, `ONEOFF_PURCHASES`, `INSTALLMENTS_PURCHASES`  
+    - `PURCHASES_FREQUENCY`, `ONEOFF_PURCHASES_FREQUENCY`, `PURCHASES_INSTALLMENTS_FREQUENCY`  
+    - `CASH_ADVANCE`, `CASH_ADVANCE_FREQUENCY`, `CASH_ADVANCE_TRX`  
+    - `PURCHASES_TRX`  
+    - `CREDIT_LIMIT`  
+    - `PAYMENTS`, `MINIMUM_PAYMENTS`  
+    - `PRC_FULL_PAYMENT`  
+    - `TENURE`  
+
+---
+
+## 4. Struktur Proyek
+
+> Catatan: sesuaikan nama file jika struktur sebenarnya berbeda.
+
+```text
 midterm-machine-learning/
 ├── data/
 │   ├── train_transaction.csv
@@ -101,3 +123,4 @@ midterm-machine-learning/
 │   └── models_clustering.py
 ├── requirements.txt
 └── README.md
+
